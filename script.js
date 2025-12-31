@@ -35,7 +35,7 @@ function createSparkles() {
         sparkle.style.left = Math.random() * 100 + "vw";
         sparkle.style.top = Math.random() * 100 + "vh";
         document.body.appendChild(sparkle);
-        setTimeout(() => { sparkle.remove(); }, 1000);
+        setTimeout(() => { sparkle.remove(); }, 2000);
     }
 }
 
@@ -76,11 +76,11 @@ function startSensor() {
 
             setTimeout(() => { isShaking = false; }, 500);
 
-            if (shakeCount === 1) {
+            if (shakeCount < 3) {
                 display.textContent = "ガシャ...";
             }
 
-            if (shakeCount >= 2) {
+            if (shakeCount >= 3) {
                 drawOmikuji();
                 shakeCount = 0;
                 if(guide) guide.style.display = "none";
