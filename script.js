@@ -4,7 +4,37 @@ const fortunes = ["大吉", "中吉", "吉", "末吉", "凶", "大凶"];
 
 function drawOmikuji() {
     let i = Math.floor(Math.random() * fortunes.length);
-    display.textContent = fortunes[i];
+    let result = fortunes[i];
+    display.textContent = result;
+
+    // もし大吉ならキラキラさせる！
+    if (result === "大吉") {
+        display.style.color = "red";
+        display.style.textShadow = "0 0 10px gold"; // 文字を光らせる
+        createSparkles(); // キラキラを出す関数を呼ぶ
+    } else {
+        display.style.color = "black";
+        display.style.textShadow = "none";
+    }
+}
+
+// キラキラをたくさん作る魔法
+function createSparkles() {
+    for (let i = 0; i < 30; i++) {
+        const sparkle = document.createElement("div");
+        sparkle.classList.add("sparkle");
+        
+        // 画面のランダムな場所に配置
+        sparkle.style.left = Math.random() * 100 + "vw";
+        sparkle.style.top = Math.random() * 100 + "vh";
+        
+        document.body.appendChild(sparkle);
+        
+        // アニメーションが終わったら消す
+        setTimeout(() => {
+            sparkle.remove();
+        }, 1000);
+    }
 }
 
 btn.addEventListener('click', () => {
@@ -36,15 +66,15 @@ function startSensor() {
 
         const totalAccel = Math.abs(acc.x) + Math.abs(acc.y) + Math.abs(acc.z);
 
-        // 感度を少し甘めの「20」に設定
-        if (totalAccel > 20 && !isShaking) {
+        // 感度を少し甘めの「30」に設定
+        if (totalAccel > 30 && !isShaking) {
             shakeCount++;
             isShaking = true;
 
-            // 0.3秒だけ休憩（連続カウント防止）
+            // 0.5秒だけ休憩（連続カウント防止）
             setTimeout(() => {
                 isShaking = false;
-            }, 300);
+            }, 500);
 
             // 1回振ったら「ガシャ...」
             if (shakeCount === 1) {
