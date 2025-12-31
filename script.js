@@ -32,6 +32,9 @@ let isShaking = false; // 連続してカウントしないためのフラグ
 function startSensor() {
     window.addEventListener('devicemotion', (event) => {
         const acc = event.accelerationIncludingGravity;
+
+        if(!acc.x) return;
+        
         const totalAccel = Math.abs(acc.x) + Math.abs(acc.y) + Math.abs(acc.z);
 
         // しきい値を超えた、かつ「今振っている最中」でなければカウント
@@ -44,7 +47,7 @@ function startSensor() {
                 isShaking = false;
             }, 500);
 
-            if(shakecheck == 1) {
+            if(shakecCount == 1) {
                 display.textContent = "ガシャ...";
             }
 
