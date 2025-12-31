@@ -43,7 +43,11 @@ function createSparkles() {
 
 btn.addEventListener('click', () => {
     // 最初のクリックでおみくじを1回引く
-    drawOmikuji();
+    display.textContent = "？"; 
+    const luckyDisp = document.getElementById("lucky-items");
+    const messageDisp = document.getElementById("minimessage");
+    if (luckyDisp) luckyDisp.textContent = "";
+    if (messageDisp) messageDisp.textContent = "";
 
     // ここで許可を求める処理を実行
     if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
@@ -80,7 +84,7 @@ function startSensor() {
 
             if (shakeCount < 3) {
                 display.textContent = "ガシャ...";
-                display.style.fontSize = "5rem";
+                display.style.fontSize = "4rem";
                 if(navigator.vibrate) navigator.vibrate(200);
                 display.classList.add("shake-text");
 
@@ -99,4 +103,3 @@ function startSensor() {
         }
     });
 }
-
