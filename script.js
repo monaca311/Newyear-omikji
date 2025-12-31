@@ -191,7 +191,7 @@ function startSensor() {
 
             if (shakeCount < 3) {
                 display.textContent = "ガシャ...";
-                display.style.fontSize = "4rem";
+                display.style.fontSize = "3.2rem";
                 if(navigator.vibrate) navigator.vibrate(200);
                 display.classList.add("shake-text");
 
@@ -210,4 +210,5 @@ function startSensor() {
         }
     });
 }
+
 
