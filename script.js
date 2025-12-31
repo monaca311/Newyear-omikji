@@ -38,7 +38,7 @@ function startSensor() {
         const totalAccel = Math.abs(acc.x) + Math.abs(acc.y) + Math.abs(acc.z);
 
         // しきい値を超えた、かつ「今振っている最中」でなければカウント
-        if (totalAccel > 30 && !isShaking) {
+        if (totalAccel >15 && !isShaking) {
             shakeCount++;
             isShaking = true; // 一度カウントしたら、一旦「振り中」にする
 
@@ -59,3 +59,4 @@ function startSensor() {
         }
     });
 }
+
