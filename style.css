@@ -17,31 +17,29 @@ body {
     border: 6px solid gold;
     border-radius: 20px;
     width: 92vw;          /* 横幅を画面の92%使う */
-    min-height: 85vh;     /* 高さを画面の85%確保（これで細長さを解消） */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between; /* 要素を上下に分散させて配置 */
-    padding: 30px 15px;
+    
+    margin: 20px auto;
+    padding: 20px 15px;
     box-sizing: border-box;
     text-align: center;
 }
 
 h1 {
-    font-size: 1.8rem;
-    margin: 0;
+    font-size: 2.2rem;
+    margin: 10px 0;
 }
 
 /* 白い結果の箱（ここを大きく見せる） */
 .kekka {
     background-color: white;
-    border: 3px dashed red;
+    border: 2px dashed red;
     width: 100%;
-    flex-grow: 1;         /* 余った縦のスペースを全部使う */
-    margin: 20px 0;
+    /* 高さを少し抑える */
+    min-height: 300px; 
+    margin: 15px 0;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 中身を上下中央に */
+    justify-content: center;
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
@@ -49,19 +47,19 @@ h1 {
 
 /* 「ガシャ...」や「大吉」 */
 #result-display {
-    font-size: 3.2rem;    /* 1行に収まりやすい絶妙なサイズ */
+    font-size: 5rem;    /* 圧倒的なデカさ */
     font-weight: bold;
     color: black;
-    white-space: nowrap;  /* 絶対に改行させない */
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 /* ラッキーアイテムと一言メッセージ */
 #lucky-items, #minimessage {
-    font-size: 1.3rem;
-    line-height: 1.6;
-    margin: 15px 0;
-    width: 100%;
+    font-size: 1.5rem !important;
+    font-weight: bold;   /* 太字にすると見やすくなります */
+    line-height: 1.4;
+    color: #333 !important;
+    margin: 10px 0;
     word-wrap: break-word; /* 長い文はここで折る */
 }
 
@@ -69,9 +67,8 @@ h1 {
 #omikuji-btn {
     background-color: red;
     color: white;
-    border: none;
-    padding: 20px 0;
-    width: 90%;           /* 横幅いっぱい */
+    width: 90%;
+    padding: 18px 0;
     font-size: 1.8rem;
     font-weight: bold;
     border-radius: 50px;
@@ -88,3 +85,4 @@ h1 {
     color: #b22222;
     margin: 10px 0 0 0;
 }
+
