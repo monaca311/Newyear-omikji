@@ -1,131 +1,90 @@
-/* 全体のリセット */
+/* 全体の背景と中央寄せ */
 body {
     background-color: #b22222;
     margin: 0;
     padding: 0;
-    width: 100%;
-    overflow-x: hidden;
+    width: 100vw;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    font-family: sans-serif;
+    overflow-x: hidden;
 }
 
-/* 外枠：scale(2.5)を消して、中身を大きくする作戦 */
+/* 外側のメインボックス（スマホの画面いっぱいに広げる） */
 .container {
     background-color: azure;
-    border-radius: 15px;
-    border: 5px solid gold;
-    text-align: center;
+    border: 6px solid gold;
+    border-radius: 20px;
+    width: 92vw;          /* 横幅を画面の92%使う */
+    min-height: 85vh;     /* 高さを画面の85%確保（これで細長さを解消） */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    width: 90%;          /* スマホの横幅に合わせる */
-    max-width: 400px;    /* 大きすぎないように */
-    padding: 20px;
+    justify-content: space-between; /* 要素を上下に分散させて配置 */
+    padding: 30px 15px;
     box-sizing: border-box;
-    margin: 20px auto;
-
-    zoom: 2.5;
+    text-align: center;
 }
 
-/* タイトルを大きく */
 h1 {
-    font-size: 1.5rem;
-    margin: 10px 0;
+    font-size: 1.8rem;
+    margin: 0;
 }
 
-/* ★ここが重要！結果の箱 */
+/* 白い結果の箱（ここを大きく見せる） */
 .kekka {
     background-color: white;
-    border: 2px dashed red;
-    width: 100%;         /* 親(container)に合わせる */
-    min-height: 200px;
+    border: 3px dashed red;
+    width: 100%;
+    flex-grow: 1;         /* 余った縦のスペースを全部使う */
+    margin: 20px 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* 中身を上下中央に */
     align-items: center;
-    margin: 10px 0;
-    padding: 15px;
+    padding: 20px;
     box-sizing: border-box;
-    /* white-space: nowrap; は絶対に入れない！ */
 }
 
-/* 運勢文字 */
+/* 「ガシャ...」や「大吉」 */
 #result-display {
-    font-size: 2.5rem;
+    font-size: 3.2rem;    /* 1行に収まりやすい絶妙なサイズ */
     font-weight: bold;
-    margin: 20px 0;
-    width: 100%;
-    text-align: center;
-    white-space: nowrap;
-    word-break: normal;
+    color: black;
+    white-space: nowrap;  /* 絶対に改行させない */
+    margin: 10px 0;
 }
 
-/* ラッキーアイテムと一言：右に突き抜けない設定 */
+/* ラッキーアイテムと一言メッセージ */
 #lucky-items, #minimessage {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin: 15px 0;
     width: 100%;
-    font-size: 1.1rem !important; /* HTMLのstyle属性より優先させる */
-    color: #333 !important;
-    margin-top: 10px;
-    line-height: 1.5;
-    word-wrap: break-word;     /* 長い文を折り返す */
-    overflow-wrap: break-word; /* 枠の端で折る */
-    white-space: normal;       /* 改行を許可 */
+    word-wrap: break-word; /* 長い文はここで折る */
 }
 
 /* ボタンを大きく押しやすく */
 #omikuji-btn {
     background-color: red;
     color: white;
-    cursor: pointer;
     border: none;
-    padding: 15px 30px;
-    font-size: 1.2rem;
+    padding: 20px 0;
+    width: 90%;           /* 横幅いっぱい */
+    font-size: 1.8rem;
     font-weight: bold;
     border-radius: 50px;
-    box-shadow: 0 4px 0 darkred;
-    width: 80%;
+    box-shadow: 0 6px 0 darkred;
 }
 
 #omikuji-btn:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 0 darkred;
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 darkred;
 }
 
 #guide {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #b22222;
-    margin-top: 10px;
+    margin: 10px 0 0 0;
 }
-
-/* --- キラキラと揺れのアニメーション（今のままでOK） --- */
-.sparkle {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    background-color: gold;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    animation: fly-away 1s ease-out forwards;
-}
-
-@keyframes fly-away {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-100px) scale(0); opacity: 0; }
-}
-
-.shake-text {
-    animation: shake 0.1s infinite;
-}
-
-@keyframes shake {
-    0% { transform: translate(2px, 2px); }
-    50% { transform: translate(-2px, -2px); }
-    100% { transform: translate(2px, 2px); }
-}
-
-
