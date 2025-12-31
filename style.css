@@ -26,7 +26,9 @@ body {
     max-width: 400px;    /* 大きすぎないように */
     padding: 20px;
     box-sizing: border-box;
-    margin: 20px;
+    margin: 20px auto;
+
+    zoom: 2.0;
 }
 
 /* タイトルを大きく */
@@ -122,3 +124,4 @@ h1 {
     50% { transform: translate(-2px, -2px); }
     100% { transform: translate(2px, 2px); }
 }
+
