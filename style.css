@@ -50,3 +50,21 @@ body{
     align-items: center;
     margin: 20px auto;
 }
+
+/* キラキラの星の見た目 */
+.sparkle {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: gold;
+    border-radius: 50%; /* 丸い形 */
+    pointer-events: none; /* クリックの邪魔をしない */
+    z-index: 9999;
+    animation: fly-away 1s ease-out forwards;
+}
+
+/* 上に飛んで消えるアニメーション */
+@keyframes fly-away {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-100px) scale(0); opacity: 0; }
+}
