@@ -1,4 +1,4 @@
-/* 全体の背景と中央寄せ */
+/* 1. 画面全体のベース設定 */
 body {
     background-color: #b22222;
     margin: 0;
@@ -8,81 +8,125 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
+    overflow-x: hidden; /* 右はみ出しを強制カット */
+    font-family: sans-serif;
 }
 
-/* 外側のメインボックス（スマホの画面いっぱいに広げる） */
+/* 2. メインコンテナ（画面いっぱいに広げる） */
 .container {
     background-color: azure;
-    border: 6px solid gold;
+    border: 8px solid gold;
     border-radius: 20px;
-    width: 92vw;          /* 横幅を画面の92%使う */
-    
-    margin: 20px auto;
-    padding: 20px 15px;
-    box-sizing: border-box;
+    width: 95vw;          /* 横幅95% */
+    margin: 10px auto;
+    padding: 40px 10px;   /* 上下に余裕を持たせる */
+    box-sizing: border-box; /* 枠線を含めて幅を計算 */
     text-align: center;
-}
-
-h1 {
-    font-size: 2.2rem;
-    margin: 10px 0;
-}
-
-/* 白い結果の箱（ここを大きく見せる） */
-.kekka {
-    background-color: white;
-    border: 2px dashed red;
-    width: 100%;
-    /* 高さを少し抑える */
-    min-height: 300px; 
-    margin: 15px 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* 3. タイトル（巨大化） */
+h1 {
+    font-size: 2.5rem;
+    margin: 0 0 20px 0;
+}
+
+/* 4. 結果表示の白い箱（ボリュームを出す） */
+.kekka {
+    background-color: white;
+    border: 3px dashed red;
+    width: 100%;
+    min-height: 420px;    /* 高さをしっかり確保 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* 要素を均等に配置 */
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
+    margin: 20px 0;
 }
 
-/* 「ガシャ...」や「大吉」 */
+/* 5. 運勢（大吉など：画面の主役） */
 #result-display {
-    font-size: 5rem;    /* 圧倒的なデカさ */
+    font-size: 6.5rem;    /* 圧倒的なデカさ */
     font-weight: bold;
     color: black;
-    margin: 15px 0;
+    line-height: 1;
+    margin: 0;
+    white-space: nowrap;  /* ガシャ...を1行に固定 */
 }
 
-/* ラッキーアイテムと一言メッセージ */
+/* 6. ラッキーアイテムと一言メッセージ（太く大きく） */
 #lucky-items, #minimessage {
-    font-size: 1.5rem !important;
-    font-weight: bold;   /* 太字にすると見やすくなります */
-    line-height: 1.4;
+    font-size: 1.8rem !important;
+    font-weight: 800;   /* 極太 */
+    line-height: 1.5;
     color: #333 !important;
-    margin: 10px 0;
-    word-wrap: break-word; /* 長い文はここで折る */
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal; /* 改行タグ<br>を有効にする */
 }
 
-/* ボタンを大きく押しやすく */
+/* 7. おみくじボタン（ド迫力ボタン） */
 #omikuji-btn {
     background-color: red;
     color: white;
-    width: 90%;
-    padding: 18px 0;
-    font-size: 1.8rem;
+    width: 95%;
+    padding: 25px 0;
+    font-size: 2.2rem;
     font-weight: bold;
-    border-radius: 50px;
-    box-shadow: 0 6px 0 darkred;
+    border: none;
+    border-radius: 60px;
+    box-shadow: 0 8px 0 darkred;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 #omikuji-btn:active {
-    transform: translateY(3px);
-    box-shadow: 0 3px 0 darkred;
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 darkred;
 }
 
+/* 8. ガイド文 */
 #guide {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #b22222;
-    margin: 10px 0 0 0;
+    margin-top: 15px;
+    font-weight: bold;
 }
 
+/* --- 演出用アニメーションここから --- */
+
+/* キラキラの星の見た目 */
+.sparkle {
+    position: fixed;
+    width: 15px;          /* 少し大きくしました */
+    height: 15px;
+    background-color: gold;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: fly-away 1s ease-out forwards;
+}
+
+/* 上に飛んで消えるアニメーション */
+@keyframes fly-away {
+    0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-150px) scale(0) rotate(180deg); opacity: 0; }
+}
+
+/* ガシャガシャ揺れるアニメーション */
+.shake-text {
+    display: inline-block;
+    animation: shake 0.1s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(3px, 3px); }
+    50% { transform: translate(-3px, -3px); }
+    100% { transform: translate(3px, 3px); }
+}
