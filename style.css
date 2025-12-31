@@ -22,10 +22,40 @@ body{
     transform-origin: center;
 }
 
-#result-display{
-    font-size: 3rem;
+#result-area {
+    background-color: white;
+    width: 85%;              /* 画面の幅に合わせる */
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    border: 5px solid #ffd700;
+    
+    /* ↓ここがポイント！ */
+    min-height: 250px;       /* 最低限の高さは確保 */
+    height: auto;            /* 文字が増えたら自動で縦に伸びる */
+    overflow: hidden;        /* はみ出た部分を隠す（念のため） */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 中身を中央に寄せる */
+    align-items: center;
 }
 
+/* 運勢（大吉など）の設定 */
+#result-display {
+    font-weight: bold;
+    margin-bottom: 15px;
+    word-break: break-all;   /* 枠で強制改行 */
+    width: 100%;             /* 横幅いっぱいに使う */
+}
+
+/* ラッキーアイテムと一言メッセージ */
+#lucky-items, #minimessage {
+    font-size: 1.1rem;       /* 少しだけ小さく調整 */
+    margin: 10px 0;
+    width: 100%;             /* 横幅いっぱいに使う */
+    word-wrap: break-word;   /* 長い文章を途中で改行する */
+    line-height: 1.5;        /* 行間を空けて読みやすく */
+}
 #omikuji-btn{
     background-color: red;
     color: white;
@@ -84,19 +114,4 @@ body{
     0% { transform: translate(2px, 2px); }
     50% { transform: translate(-2px, -2px); }
     100% { transform: translate(2px, 2px); }
-}
-
-#minimessage {
-    font-size: 1rem;       /* 文字を少しだけ小さくする */
-    min-height: 3em;       /* 3行分くらいの高さを確保する */
-    line-height: 1.5;      /* 行の間隔を空けて読みやすくする */
-    padding: 0 10px;       /* 左右に少し余白を作る */
-    word-break: break-all; /* 長い単語でも強制的に折り返す（保険） */
-}
-#luckyItems {
-    font-size: 1rem;       /* 文字を少しだけ小さくする */
-    min-height: 3em;       /* 3行分くらいの高さを確保する */
-    line-height: 1.5;      /* 行の間隔を空けて読みやすくする */
-    padding: 0 10px;       /* 左右に少し余白を作る */
-    word-break: break-all; /* 長い単語でも強制的に折り返す（保険） */
 }
