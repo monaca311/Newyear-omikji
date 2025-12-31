@@ -85,3 +85,18 @@ body{
     50% { transform: translate(-2px, -2px); }
     100% { transform: translate(2px, 2px); }
 }
+
+#minimessage {
+    font-size: 1rem;       /* 文字を少しだけ小さくする */
+    min-height: 3em;       /* 3行分くらいの高さを確保する */
+    line-height: 1.5;      /* 行の間隔を空けて読みやすくする */
+    padding: 0 10px;       /* 左右に少し余白を作る */
+    word-break: break-all; /* 長い単語でも強制的に折り返す（保険） */
+}
+#luckyItems {
+    font-size: 1rem;       /* 文字を少しだけ小さくする */
+    min-height: 3em;       /* 3行分くらいの高さを確保する */
+    line-height: 1.5;      /* 行の間隔を空けて読みやすくする */
+    padding: 0 10px;       /* 左右に少し余白を作る */
+    word-break: break-all; /* 長い単語でも強制的に折り返す（保険） */
+}
