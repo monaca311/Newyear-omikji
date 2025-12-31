@@ -28,7 +28,7 @@ body {
     box-sizing: border-box;
     margin: 20px auto;
 
-    zoom: 2.0;
+    zoom: 2.5;
 }
 
 /* タイトルを大きく */
@@ -55,10 +55,13 @@ h1 {
 
 /* 運勢文字 */
 #result-display {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: bold;
-    margin: 10px 0;
-    word-break: break-all;
+    margin: 20px 0;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    word-break: normal;
 }
 
 /* ラッキーアイテムと一言：右に突き抜けない設定 */
@@ -124,4 +127,5 @@ h1 {
     50% { transform: translate(-2px, -2px); }
     100% { transform: translate(2px, 2px); }
 }
+
 
