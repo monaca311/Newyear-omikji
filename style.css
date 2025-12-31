@@ -24,9 +24,6 @@ body{
 
 #result-area {
     background-color: white;
-    width: 85%;              /* 画面の幅に合わせる */
-    margin: 20px auto;
-    padding: 20px;
     border-radius: 15px;
     border: 5px solid #ffd700;
     
@@ -38,6 +35,12 @@ body{
     flex-direction: column;
     justify-content: center; /* 中身を中央に寄せる */
     align-items: center;
+
+    box-sizing: border-box;  /* パディングを含めた幅にする（これ超重要！） */
+    width: 90%;             /* 画面に対して90%の幅に固定 */
+    max-width: 400px;        /* 広がりすぎないように制限 */
+    padding: 20px;
+    margin: 20px auto;
 }
 
 /* 運勢（大吉など）の設定 */
@@ -50,12 +53,18 @@ body{
 
 /* ラッキーアイテムと一言メッセージ */
 #lucky-items, #minimessage {
-    font-size: 1.1rem;       /* 少しだけ小さく調整 */
-    margin: 10px 0;
-    width: 100%;             /* 横幅いっぱいに使う */
-    word-wrap: break-word;   /* 長い文章を途中で改行する */
-    line-height: 1.5;        /* 行間を空けて読みやすく */
+    display: block;          /* ちゃんと箱として扱う */
+    width: 100%;            /* 親の箱（result-area）の幅いっぱいに使う */
+    box-sizing: border-box;
+    text-align: center;      /* 文字を中央に */
+    
+    /* ↓↓↓ 右あふれを絶対に防ぐ魔法の3行 ↓↓↓ */
+    white-space: normal;     /* 自動改行を許可する */
+    overflow-wrap: break-word; /* 枠の右端で強制的に改行する */
+    word-break: break-all;   /* どんな文字でも端っこで折る */
+    line-height: 1.6;        /* 行間を少し空けると読みやすい */
 }
+
 #omikuji-btn{
     background-color: red;
     color: white;
@@ -115,3 +124,4 @@ body{
     50% { transform: translate(-2px, -2px); }
     100% { transform: translate(2px, 2px); }
 }
+
