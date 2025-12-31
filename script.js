@@ -26,8 +26,8 @@ btn.addEventListener('click', () => {
     }
 });
 
-let shakeCount = 0; // 振られた回数を数える箱
-let isShaking = false; // 連続してカウントしないためのフラグ
+let shakeCount = 0;
+let isShaking = false;
 
 function startSensor() {
     window.addEventListener('devicemotion', (event) => {
@@ -36,9 +36,26 @@ function startSensor() {
 
         const totalAccel = Math.abs(acc.x) + Math.abs(acc.y) + Math.abs(acc.z);
 
-        // 15まで下げて、かつif文を一つだけにします
-        if (totalAccel > 15) {
-            drawOmikuji();
+        // 感度を少し甘めの「20」に設定
+        if (totalAccel > 20 && !isShaking) {
+            shakeCount++;
+            isShaking = true;
+
+            // 0.3秒だけ休憩（連続カウント防止）
+            setTimeout(() => {
+                isShaking = false;
+            }, 300);
+
+            // 1回振ったら「ガシャ...」
+            if (shakeCount === 1) {
+                display.textContent = "ガシャ...";
+            }
+
+            // 2回振ったら結果発表！
+            if (shakeCount >= 2) {
+                drawOmikuji();
+                shakeCount = 0; // カウントをリセット
+            }
         }
     });
 }
