@@ -8,6 +8,8 @@ function drawOmikuji() {
     let i = Math.floor(Math.random() * fortunes.length);
     let result = fortunes[i];
     display.textContent = result;
+    display.style.fontSize = "3rem"; // ここで元のサイズ（3rem）に戻す
+    display.classList.remove("shake-text");
 
     // ID名をHTMLと完全に一致させました
     let j = Math.floor(Math.random() * luckyItems.length);
@@ -78,6 +80,14 @@ function startSensor() {
 
             if (shakeCount < 3) {
                 display.textContent = "ガシャ...";
+                if(navigator.vibrate) navigator.vibrate(200);
+                display.classList.add("shake-text");
+
+                // ラッキーアイテムとメッセージを一旦空にする
+                const luckyDisp = document.getElementById("lucky-items");
+                const messageDisp = document.getElementById("minimessage");
+                if (luckyDisp) luckyDisp.textContent = "";
+                if (messageDisp) messageDisp.textContent = "";
             }
 
             if (shakeCount >= 3) {
