@@ -1,11 +1,19 @@
 const btn = document.getElementById("omikuji-btn");
 const display = document.getElementById("result-display");
 const fortunes = ["大吉", "中吉", "吉", "末吉", "凶", "大凶"];
+const luckyItems = ["ラッキーおやつ: チョコ", "勉強運: 絶好調！", "ラッキーカラー: 青", "ラッキーアイテム: 消しゴム"];
+const minimessage = ["無理しすぎないで", "今日は早く寝よう", "いいことあるよ"];
 
 function drawOmikuji() {
     let i = Math.floor(Math.random() * fortunes.length);
     let result = fortunes[i];
     display.textContent = result;
+
+    let j = Math.floor(Math.random() * luckyItems.length);
+    document.getElementById("lucky-items").textContent = luckyItems[j];
+
+    let k = Math.floor(Math.random() * minimessage.length);
+    document.getElementById("minimessage").textContent = minimessage[k];
 
     // もし大吉ならキラキラさせる！
     if (result === "大吉") {
@@ -60,6 +68,8 @@ let shakeCount = 0;
 let isShaking = false;
 
 function startSensor() {
+    document.getElementById("guide").textContent = "いい感じ！もっと振って！";
+
     window.addEventListener('devicemotion', (event) => {
         const acc = event.accelerationIncludingGravity;
         if (!acc || !acc.x) return; 
@@ -85,6 +95,7 @@ function startSensor() {
             if (shakeCount >= 2) {
                 drawOmikuji();
                 shakeCount = 0; // カウントをリセット
+                document.getElementById("guide").style.display = "none";
             }
         }
     });
