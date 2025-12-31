@@ -70,3 +70,14 @@ body{
     0% { transform: translateY(0) scale(1); opacity: 1; }
     100% { transform: translateY(-100px) scale(0); opacity: 0; }
 }
+
+/* 文字を揺らすアニメーション */
+.shake-text {
+    animation: shake 0.1s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(2px, 2px); }
+    50% { transform: translate(-2px, -2px); }
+    100% { transform: translate(2px, 2px); }
+}
